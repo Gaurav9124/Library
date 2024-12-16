@@ -45,20 +45,49 @@ closeModal.addEventListener("click", (e) => {
   Modal.close();
 });
 
+
 function displayBook() {
+  const bookIndex = library.length - 1;
   const bookCard = document.createElement("div");
-  bookCard.innerHTML = `<p>Title : ${library[library.length - 1].title} </p>`;
-  bookCard.innerHTML += `<p>Author : ${library[library.length - 1].author} </p>`;
-  bookCard.innerHTML += `<p>Pages : ${library[library.length - 1].pages} </p>`;
-  bookCard.innerHTML += `<p>Completed : ${library[library.length - 1].read}</p>`;
-  // bookCard.style.fontFamily="old Standard TT, serif";
-  // bookCard.style.boxSizing="borderBox";
-  // bookCard.style.fontSize="32px";
-  // bookCard.style.overflow="scroll";
+  const deleteCard = document.createElement("button");
+  const toggleRead = document.createElement("button");
+
+  deleteCard.innerText = "Delete";
+  deleteCard.style.padding = "1em";
+  deleteCard.setAttribute("class", "deleteCardButton");
+
+  toggleRead.innerText = "Toggle read";
+  toggleRead.style.padding = "1em";
+  toggleRead.setAttribute("class", "toggleReadButton");
+
+  bookCard.innerHTML = `
+    <p>Title : ${library[bookIndex].title} </p>
+    <p>Author : ${library[bookIndex].author} </p>
+    <p>Pages : ${library[bookIndex].pages} </p>
+    <p>Completed : ${library[bookIndex].read}</p>
+  `;
+
+  bookCard.appendChild(toggleRead);
+  bookCard.appendChild(deleteCard);
+
   bookCard.setAttribute("class", "bookCard");
+  bookCard.setAttribute("data-index", bookIndex);
   bookCard.style.height = "300px";
   bookCard.style.padding = "2em";
   bookCard.style.borderRadius = "10px";
   bookCard.style.border = "1px solid black";
+
+  toggleRead.addEventListener("click", () => {
+    library[bookIndex].read = !library[bookIndex].read;
+    bookCard.querySelector(
+      "p:nth-child(4)"
+    ).innerText = `Completed : ${library[bookIndex].read}`;
+  });
+
+  deleteCard.addEventListener("click", () => {
+    library.splice(bookIndex, 1);
+    bookCard.remove();
+  });
+
   libraryGrid.appendChild(bookCard);
 }

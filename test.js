@@ -1,9 +1,3 @@
-function book(name, title){
-    this.name=name;
-    this.title=title;
+let a=true;
 
-}
-
-const book1=new book("someBook", "Alchemist");
-
-console.log(book1);
+console.log(!a);
