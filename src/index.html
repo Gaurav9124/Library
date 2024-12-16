@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playwrite+ZA+Guides&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Playwrite+ZA+Guides&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Playwrite+ZA+Guides&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+    </style>
+  </head>
+  <body>
+    <div class="library">
+      <div class="header">
+        <button id="add-book"></button>
+        <h1>Library</h1>
+        <div class="description">
+          <p>Number of Books : 2</p>
+          <label for="delete-library">Delete Library </label>
+          <button id="delete-library">Delete</button>
+        </div>
+      </div>
+
+      <div class="library-grid">
+        <dialog class="modal" id="modal">
+          <form method="dialog">
+            <label for="title" class="book-information"
+              >Title : <input required id="title" type="text"
+            /></label>
+            <label for="author" class="book-information"
+              >Author : <input required type="text" id="author"
+            /></label>
+            <label for="pages" class="book-information"
+              >Number of Pages : <input required type="number" id="pages"
+            /></label>
+            <label for="status" class="book-information"
+              >Read? : <input type="checkbox" id="status"
+            /></label>
+            <input id="submit-close-modal" type="submit" value="Add Book" />
+          </form>
+        </dialog>
+
+        <!-- <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>
+        <div class="card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          vitae eaque minus expedita ullam consequuntur blanditiis minima harum
+          eveniet totam iure, repellendus quos natus autem sit repellat officiis
+          fuga nam?
+        </div>  -->
+        
+      </div>
+    </div>
+
+    <script src="../assets/script.js"></script>
+  </body>
+</html>
