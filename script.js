@@ -26,7 +26,7 @@ submitModal.addEventListener("click", (e) => {
   e.preventDefault();
   if (form.checkValidity()) {
     addBookToLibrary();
-    createCard();
+    render();
     modal.close();
   } else {
     alert("all details are required");
@@ -67,8 +67,8 @@ function addBookToLibrary() {
   clearModalInputs();
 }
 
-function deleteBookfromLibrary(){
-  
+function deleteBookfromLibrary(n) {
+  libraryCollection.splice(n - 1, 1);
 }
 
 function clearModalInputs() {
@@ -78,43 +78,74 @@ function clearModalInputs() {
   readStatus.checked = false;
 }
 
-function createCard() {
-  let currentBook = libraryCollection[libraryCollection.length - 1];
-  const bookCard = document.createElement("div");
-  bookCard.style.backgroundColor = "white";
-  bookCard.style.display = "flex";
-  bookCard.style.flexDirection = "column";
-  bookCard.style.alignItems = "center";
-  bookCard.style.justifyContent = "center";
-  bookCard.style.boxSizing = "borderbox";
+function render() {
+  container.innerHTML = "";
+  libraryCollection.forEach((book, index) => {
+    const bookCard = document.createElement("div");
+    bookCard.style.display = "flex";
+    bookCard.style.flexDirection = "column";
+    bookCard.style.alignItems = "center";
+    bookCard.style.justifyContent = "space-evenly";
+    bookCard.style.boxSizing = "border-box";
+    bookCard.style.backgroundColor = '#1E1E1E' ;
+    bookCard.style.borderRadius="20px";
 
-  const bookCardName = document.createElement("p");
-  bookCardName.textContent = `'${currentBook.book}'`;
-  bookCard.appendChild(bookCardName);
+    const bookCardName = document.createElement("p");
+    bookCardName.textContent = `'${book.book}'`;
+    bookCardName.style.fontFamily="Viaoda Libre";
+    bookCardName.style.fontSize = "2em";
+    bookCardName.style.fontWeight = "bold";
+    bookCardName.style.color="white";
+    bookCardName.style.margin = "0";
+    bookCard.appendChild(bookCardName);
 
-  const bookCardAuthor = document.createElement("p");
-  bookCardAuthor.textContent = `-by ${currentBook.author}.`;
-  bookCard.appendChild(bookCardAuthor);
+    const bookCardAuthor = document.createElement("p");
+    bookCardAuthor.textContent = `-by ${book.author}`;
+    bookCardAuthor.style.fontFamily="Viaoda Libre";
+    bookCardAuthor.style.fontWeight="600";
+    bookCardAuthor.style.fontSize="1.2em";
+    bookCardAuthor.style.color="white";
+    bookCardAuthor.style.margin = "0";
+    bookCard.appendChild(bookCardAuthor);
 
-  const bookCardPages = document.createElement("p");
-  bookCardPages.textContent = `Number of pages : ${currentBook.pages}`;
-  bookCard.appendChild(bookCardPages);
+    const bookCardPages=document.createElement("p");
+    bookCardPages.textContent=`Number of Pages : ${book.pages}`;
+    bookCardPages.style.fontFamily="Viaoda Libre";
+    bookCardPages.style.color="white";
+    bookCardPages.style.margin="none";
+    bookCard.appendChild(bookCardPages);
 
-  const bookCardReadStatus = document.createElement("button");
-  bookCardReadStatus.textContent = `${currentBook.readStatus}`;
-  bookCardReadStatus.setAttribute("class", "bookreadstatus");
+    const toggleRead = document.createElement("button");
+    toggleRead.style.width = "100%";
+    toggleRead.style.height = "3em";
+    toggleRead.style.border="none";
+    toggleRead.style.color="white";
+    toggleRead.style.fontWeight="600";
+    toggleRead.style.fontFamily="Viaoda Libre";
+    toggleRead.textContent = book.readStatus ? "COMPLETED" : "NOT COMPLETED";
+    toggleRead.style.backgroundColor = book.readStatus ? "#4CAF50 " : " #FFC107";
+    toggleRead.addEventListener("click", () => {
+      libraryCollection[index].readStatus =
+        !libraryCollection[index].readStatus;
+      render();
+    });
+    bookCard.appendChild(toggleRead);
 
-  bookCard.appendChild(bookCardReadStatus);
+    const deleteCard = document.createElement("button");
+    deleteCard.textContent = "REMOVE";
+    deleteCard.style.height = "3em";
+    deleteCard.style.width = "100%";
+    deleteCard.style.border = "none";
+    deleteCard.style.fontFamily="Viaoda Libre";
+    deleteCard.style.fontWeight="600";
+    deleteCard.style.color = "white";
+    deleteCard.style.backgroundColor = " #F44336 ";
+    deleteCard.addEventListener("click", () => {
+      libraryCollection.splice(index, 1);
+      render();
+    });
+    bookCard.appendChild(deleteCard);
 
-  const bookCardDelete = document.createElement("button");
-  bookCardDelete.textContent = "DELETE";
-
-  bookCardDelete.addEventListener("click", () => {
-    libraryCollection.pop();
-    bookCard.remove();
+    container.appendChild(bookCard);
   });
-
-  bookCard.appendChild(bookCardDelete);
-
-  container.appendChild(bookCard);
 }

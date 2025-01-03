@@ -19,7 +19,8 @@ h1 {
   margin: 0;
   margin: 0 0 0 0;
   padding-top: 1em;
-  background-color: antiquewhite;
+  background-color:  #282828;
+  color: #ffd700;
   padding-bottom: 0.5em;
 }
 
@@ -93,7 +94,7 @@ legend {
   box-sizing: border-box;
   min-height: 100vh;
   /* background-color: rgba(2,9,21,255); */
-  background-color: bisque;
+  background-color:   #121212 ;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,7 +105,7 @@ legend {
   padding: 1em 3em;
   font-size: medium;
   margin-bottom: 3em;
-  background-color: red;
+  background-color: #B8860B;
   color: white;
   font-weight: bold;
   border: none;
@@ -115,7 +116,8 @@ legend {
 }
 
 footer {
-  background-color: antiquewhite;
+  background-color:  #282828;
+  color: #ffd700;
   box-sizing: border-box;
   text-align: center;
   font-family: "Viaoda Libre";
@@ -126,5 +128,5 @@ footer {
 }
 a {
   text-decoration: none;
-  color: black;
+  color: #ffd700;
 }
